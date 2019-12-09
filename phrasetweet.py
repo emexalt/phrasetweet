@@ -2,12 +2,11 @@
 phrasetweet.py
 em folsom, 2019, copyleft
 a really ugly way of making tweets that form a "phrase bowtie"
-eg: 
 """
 from sys import exit
 str1 = ""
 str2 = ""
-pivotLetter = ""
+pivotLetter = "" #shared letter at the start of str1 and str2
 
 
 str1 = input("Please enter a string. ")
@@ -15,26 +14,42 @@ str2 = input("Enter a second string, starting with the same letter. ")
 
 
 def validate(str1, str2):
+    """
+    Takes str1 and str2, determines whether they start with the same letter.
+    Raises a ValueError if not true, which is handled in main().
+    """
     if str1[0] == str2 [0]:
         pivotLetter = str1[0]
     else:
         raise ValueError("Phrases do not share common letter")
 
 def trimLast(phrase):
-    for char in range(len(phrase)-1):
-        if len(phrase) < 2 or len(phrase) == 0 or phrase[char] == " ":
-            pass
+    """
+    Given a phrase, prints the phrase repeatedly on the terminal, with 
+    the last char characters removed.
+    """
+    for char in range(len(phrase)):
+        if char == 0: #Makes sure to print the full phrase first.
+            print(phrase)
         else:
-            print(phrase[:-char])
+            print(phrase[:-char-1])
 
 def trimFirst(phrase):
+    """
+    Given a phrase, prints the prhase repeatedly, starting with the first 
+    character, then adding characters char+1 at a time.
+    """
     for char in range(len(phrase)):
         if phrase[char] == " ":
             pass
         else:
-            print(phrase[:char])
+            print(phrase[:char+1])
 
 def main(str1, str2):
+    """
+    Given two strings, prints the result of trimLast() on str1 and trimFirst()
+    on str2. Handles ValueError raised by validate().
+    """
     try:
         validate(str1, str2)
     except ValueError:
