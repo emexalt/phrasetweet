@@ -1,16 +1,12 @@
 """
 phrasetweet.py
-em folsom, 2019, copyleft
+em folsom, 2019, copyleft 
 a really ugly way of making tweets that form a "phrase bowtie"
 """
-from sys import exit
+import sys
 str1 = ""
 str2 = ""
 pivotLetter = "" #shared letter at the start of str1 and str2
-
-
-str1 = input("Please enter a string. ")
-str2 = input("Enter a second string, starting with the same letter. ")
 
 
 def validate(str1, str2):
@@ -58,10 +54,11 @@ def main(str1, str2):
         if option.capitalize == "Y":
             pass
         elif option.capitalize == "N":
-            exit(0)
+            sys.exit(0)
         else:
             validate(str1, str2)
     trimLast(str1)
     trimFirst(str2)
 
-main(str1, str2)
+# generate output from command line args 
+main(sys.argv[1], sys.argv[2])

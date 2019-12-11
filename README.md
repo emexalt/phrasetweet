@@ -26,3 +26,8 @@ Hold my be
 Hold my bee
 Hold my beer!
 ```
+
+### Usage
+
+```
+phrasetweet <phrase1> <phrase2>
